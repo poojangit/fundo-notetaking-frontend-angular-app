@@ -1,0 +1,98 @@
+<div class="signup-main">
+    <div class="signup-box">
+
+        <div class="form-section">
+            <img 
+            src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" 
+            alt="Google Logo" class="logo">
+            <h2>Create your Google Account</h2>
+
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="input-group">
+                        <input 
+                            type="text"
+                            formControlName="firstName"
+                            placeholder="First name"
+                        />
+                        <div class="error" *ngIf="firstName.invalid && firstName.touched">
+                            First name is Required and must start with Capital letter
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <input 
+                        type="text"
+                        formControlName = "lastName"
+                        placeholder="Last name"
+                        />
+                        <div class="error" *ngIf="lastName.invalid && lastName.touched">
+                            Last name is Required 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <input type="email"
+                    formControlName="username"
+                    placeholder="Username"
+                    />
+                    <div class="error" *ngIf="username.invalid && username.touched">
+                        Enter a valid email address
+                    </div>
+                </div>
+                <div class="subtitle"> You can use letter, number & periods</div>
+                
+                <div class="link"> Use my current email instead</div>
+                
+                <div class="row">
+                    <div class="input-group">
+                        <input 
+                        type="password"
+                        formControlName="password"
+                        placeholder="Password"
+                        />
+                        <div 
+                            class="error"
+                            *ngIf="password.invalid && password.touched"
+                        >
+                            Password must be at least 6 characters
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <input 
+                        type="password"
+                        formControlName="confirmPassword"
+                        placeholder="Confirm password"
+                        />
+                        <div
+                            class="error"
+                            *ngIf="confirmPassword.invalid && confirmPassword.touched"
+                        >
+                        Please confirm your password
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkbox">
+                    <input 
+                        type="checkbox"
+                        id="showpass"
+                        (change)="togglePassword($event)"
+                    />
+                    <label for="showpass" > Show password</label>
+                </div>
+
+                <div class="actions">
+                    <a routerLink="/login"> Sign in instead</a>
+                    <button type="submit" [disabled]> Next</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="illustration">
+            <img src="https://ssl.gstatic.com/accounts/signup/glif/account.svg" alt="Illustration">
+        </div>
+    </div>
+</div>
