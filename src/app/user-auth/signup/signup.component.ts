@@ -64,6 +64,18 @@ export class SignupComponent {
     this.signupForm.markAllAsTouched()
     return
     }
+
+    const {firstName, lastName, username, password} = this.signupForm.value
+
+    const payload = {
+      firstName,
+      lastName,
+      email: username,
+      password,
+      service: 'advance'
+    }
+
+    console.log('Signup payload:', payload)
   }
   
 }
