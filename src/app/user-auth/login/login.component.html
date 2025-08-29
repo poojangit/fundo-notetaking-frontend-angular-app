@@ -1,0 +1,35 @@
+<div class="login-container">
+    <div class="login-box">
+        <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_92x30dp.png" alt="Google logo">
+        <h2>Login</h2>
+        <p>Use your Google Account</p>
+
+        <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+            <input 
+                type="text"
+                name="email"
+                ngModel
+                placeholder="Email or phone"
+                required
+            />
+            <input 
+                type="password"
+                name="password"
+                ngModel
+                placeholder="Enter your password"
+                required
+            />
+
+            <!-- Forgot password link above -->
+            <div class="forgot-password">
+                <a class="link" href="#"> Forgot password</a>
+            </div>
+
+             <!-- Bottom row: Create account (left), Login (right) -->
+            <div class="form-footer">
+                <a class="link" routerLink="/signup">Create account</a>
+                <button type="submit" [disabled]="!loginForm.valid">Login</button>
+            </div>
+        </form>
+    </div>
+</div>

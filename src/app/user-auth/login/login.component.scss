@@ -1,0 +1,112 @@
+//* ----------Centering a container----------
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #fff;
+}
+
+//* -----------Login box styling---------------
+
+.login-box {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 50px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+    background-color: #fff;
+}
+
+//*-------------Login logo -------------
+
+.login-box img {
+    width: 90px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+//* -------------Heading-----------------
+
+.login-box h2 {
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 14px;
+    color: #202124;
+    text-align: center;
+}
+
+.login-box p {
+    font-size: 16px;
+    color: #5f6368;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+//* -----------Input Fields----------------
+
+form input {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+//* ----------Forgot password-----------------
+
+.forgot-password {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 35px;
+}
+
+.forgot-password .link {
+    font-size: 14px;
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.forgot-password .link:hover{
+    text-decoration: underline;
+}
+
+//* ----------Footer Buttons Row----------------
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.form-footer .link {
+    font-size: 14px;
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.form-footer .link:hover {
+    text-decoration: underline;
+}
+
+//* ----------Login Button---------------
+
+.form-footer button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 12px 26px;
+    font-size: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
