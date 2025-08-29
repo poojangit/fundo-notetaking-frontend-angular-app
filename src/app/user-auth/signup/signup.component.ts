@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -9,7 +12,9 @@ export class SignupComponent {
   signupForm : FormGroup ;
 
   constructor(
-    private fb: FormBuilder 
+    private fb: FormBuilder ,
+    private userService: UserService,
+    private router : Router
   ){
     this.signupForm = this.createSignupForm()
   }
@@ -76,6 +81,20 @@ export class SignupComponent {
     }
 
     console.log('Signup payload:', payload)
+    this.userService.signUp(payload).subscribe({
+      next: () => {
+        alert('Signup successful! Redirecting to login...')
+        this.router.navigate(['/login'])
+      },
+      error: (error) => {
+        if(error.status === 422 && error.error?.message?.includes("Email already exists")) {
+          alert('Email already registered. Please use a different email')
+        } else {
+          alert("Something went wrong. Please try again.")
+        }
+
+      }
+    })
   }
   
 }
