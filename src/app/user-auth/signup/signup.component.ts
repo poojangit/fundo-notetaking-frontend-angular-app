@@ -78,7 +78,6 @@ export class SignupComponent {
       lastName,
       email: username,
       password,
-      service: 'advance'
     }
 
     console.log('Signup payload:', payload)

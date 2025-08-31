@@ -1,0 +1,210 @@
+.main-header {
+    // border: 2px solid firebrick;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    z-index: 10000;
+    font-family: 'Roboto' , sans-serif;
+    flex-wrap: nowrap;
+}
+
+/* Left: Logo + Title */
+.menu-logo{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .menu-icon {
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        .material-icons {
+            font-size: 24px;
+            color: #5f6368 ;
+        }
+    }
+
+    .keep-logo,
+    .keep-title {
+        cursor: pointer;
+    }
+
+    .keep-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .keep-title {
+        font-size: 22px;
+        font-weight: 500;
+        color: #5f6368;
+    }
+}
+
+/* Center: Search Bar */
+.search-bar {
+    flex: 1;
+    max-width: 720px;
+    display: flex;
+    align-items: center;
+    background-color: #f1f3f4;
+    border-radius: 8px;
+    padding: 6px 12px;
+    margin: 0 32px;
+
+    .material-icons {
+        color: #5f6368;
+        cursor: pointer;
+    }
+
+    input {
+        flex: 1;
+        border: none;
+        background: transparent;
+        font-size: 16px;
+        margin: 0 8px;
+        outline: none;
+    }
+
+    .close-icon {
+        cursor: pointer;
+    }
+}
+
+/* Right: Icons + Profile */
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .material-icons {
+        font-size: 24px;
+        color: #5f6368;
+        cursor: pointer;
+        padding: 6px;
+        border-radius: 50%;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: #e8eaed;
+        }
+    }
+
+    .profile-wrapper {
+        position: relative;
+        cursor: pointer;
+
+        .profile-pic{
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+
+        .profile-popup{
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            padding: 12px;
+            width: 260px;
+            z-index: 1000;
+
+            .profile-info{
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 10px;
+
+                .popup-pic {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 50%;
+                }
+
+                .name {
+                    font-weight: 600;
+                    font-size: 15px;
+                    color: #202124;
+                }
+                .email {
+                    font-size: 13px;
+                    color: #5f6368
+                }
+            }
+            button {
+                width: 100%;
+                background: none;
+                border: none;
+                padding: 8px 12px;
+                text-align: left;
+                cursor: pointer;
+                font-size: 14px;
+                color: #202124;
+                border-radius: 6px;
+
+                &:hover {
+                    background-color: #f1f3f4;
+                }
+            }
+
+            hr {
+                margin: 10px 0;
+                border: 0;
+                height: 1px;
+                background-color: #ddd;
+            }
+        }
+    }
+}
+
+
+
+@media (max-width: 1024px) {
+  .search-bar {
+    max-width: 500px;
+    margin: 0 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-bar {
+    display: none;
+  }
+
+  .main-header {
+    padding: 0 12px;
+  }
+
+  .header-icons {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .keep-title {
+    font-size: 18px;
+  }
+
+  .header-icons .material-icons {
+    font-size: 22px;
+    padding: 4px;
+  }
+
+  .profile-wrapper .profile-pic {
+    width: 28px;
+    height: 28px;
+  }
+}

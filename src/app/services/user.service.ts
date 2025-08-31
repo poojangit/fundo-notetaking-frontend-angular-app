@@ -6,12 +6,12 @@ import { Observable } from "rxjs";
     providedIn: 'root'
 })
 export class UserService {
-    private baseUrl = 'https://fundoonotes.incubation.bridgelabz.com/api/user'
+    private baseUrl = 'http://localhost:3000/api/v1'
 
     constructor(private http : HttpClient) {}
 
     signUp(data: any): Observable<any> {
-        return this.http.post(`${this.baseUrl}/userSignUp`, data)
+        return this.http.post(`${this.baseUrl}/users`, data)
     }
 
     login(data : any): Observable<any> {
