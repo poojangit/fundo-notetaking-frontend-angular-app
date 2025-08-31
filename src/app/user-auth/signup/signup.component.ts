@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignupComponent {
   signupForm : FormGroup ;
+  title = "Create your google account" // One-way data binding (Interpolation)
 
   constructor(
     private fb: FormBuilder ,

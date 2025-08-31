@@ -5,7 +5,8 @@
             <img 
             src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" 
             alt="Google Logo" class="logo">
-            <h2>Create your Google Account</h2>
+            <!-- Interpolation(oneway data binding) -->
+            <h2>{{title}}</h2> 
 
             <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
                 <div class="row">
