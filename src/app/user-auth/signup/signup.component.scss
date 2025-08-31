@@ -94,6 +94,11 @@ form .row {
     cursor: pointer;
 }
 
+.actions button:disabled {
+    background-color: #c6dafc;
+    cursor: not-allowed;
+}
+
 .illustration {
     flex: 1;
     display: flex;

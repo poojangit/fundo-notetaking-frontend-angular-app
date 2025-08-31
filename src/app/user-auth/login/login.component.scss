@@ -98,6 +98,10 @@ form input {
 .form-footer .link:hover {
     text-decoration: underline;
 }
+.form-footer button:disabled {
+    background-color: #c6dafc;
+    cursor: not-allowed;
+}
 
 //* ----------Login Button---------------
 
