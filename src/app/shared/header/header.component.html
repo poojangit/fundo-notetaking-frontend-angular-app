@@ -15,23 +15,23 @@
 
     <div class="header-icons">
         <span class="material-icons" title="refresh">refresh</span>
-        <span class="material-icons" title="Grid view">grid_view</span>
+        <span class="material-icons" title="{{isGridView ? 'List view' : 'Grid view'}}" (click)="toggleView()">{{isGridView ? 'view_agenda' : 'grid_view'}}</span>
         <span class="material-icons" title="Settings">settings</span>
         <span class="material-icons" title="Apps">apps</span>
 
-        <div class="profile-wrapper">
-            <img src="" alt="Profile" class="profile-pic">
-            <div class="profile-popup">
+        <div class="profile-wrapper" (click)="toggleProfilePopup()">
+            <img [src] = "profilePic" alt="Profile" class="profile-pic">
+            <div class="profile-popup" *ngIf="showProfilePopup" (click) = "$event.stopPropagation()">
                 <div class="profile-info">
-                    <img src="" alt="User" class="popup-pic">
+                    <img [src]="profilePic" alt="User" class="popup-pic">
                     <div>
-                        <div class="name">userName</div>
-                        <div class="email">Email</div>
+                        <div class="name">{{userName}}</div>
+                        <div class="email">{{userEmail}}</div>
                     </div>
                 </div>
                 <hr>
-                <button>Add Account</button>
-                <button>Logout</button>
+                <button (click)="onAddAccount()">Add Account</button>
+                <button (click)="logout()">Logout</button>
             </div>
         </div>
     </div>
