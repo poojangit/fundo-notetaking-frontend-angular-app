@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit{
 
      // 👤 Controls the profile popup visibility
       showProfilePopup: boolean = false
+      isSidebarExpanded = false
 
      profilePic: string = "https://www.gravatar.com/avatar?d=mp"
      userName: string = ''
@@ -24,7 +25,13 @@ export class HeaderComponent implements OnInit{
     // 🔁 Events to inform parent components like Dashboard
      @Output() viewModeChanged = new EventEmitter<boolean>();
  
+     /**
+      * 🧠 toggleSidebar()
+      * Emits event to parent to open/close the sidebar (dashboard)
+      */
+     @Output() menuToggle = new EventEmitter<boolean>();
      @Output() searchTermChanged = new EventEmitter<string>
+
      constructor(private router : Router){}
      ngOnInit(): void {
          this.userName = localStorage.getItem('firstName') || 'User' 
@@ -32,6 +39,10 @@ export class HeaderComponent implements OnInit{
         // profilePic can be updated if API returns one
       }
 
+      toggleSidebar() {
+        this.isSidebarExpanded = !this.isSidebarExpanded
+        this.menuToggle.emit(this.isSidebarExpanded)
+      }
       /**
       * 🔄 toggleView()
       * Switches between Grid and List, and tells parent to update

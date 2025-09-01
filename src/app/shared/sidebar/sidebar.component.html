@@ -1,0 +1,29 @@
+<nav class="sidebar" [class.expanded]= "isSidebarExpanded">
+  <ul>
+    <!-- Notes -->
+    <li 
+      routerLink="/dashboard"
+      title="Notes">
+      <span class="material-icons">lightbulb</span>
+      <span class="label">Notes</span>
+    </li>
+
+    <!-- Reminders (placeholder, route not implemented) -->
+    <li title="Edit Labels">
+        <span class="material-icons">edit</span>
+        <span class="label">Edit labels</span>
+    </li>
+
+    <!-- Archive -->
+     <li title="Archive">
+        <span class="material-icons">archive</span>
+        <span class="label">Archive</span>
+     </li>
+
+     <!-- Trash(optional) -->
+      <li title="Trash">
+        <span class="material-icons">delete</span>
+        <span class="label">Trash</span>
+      </li>
+  </ul>
+</nav>
