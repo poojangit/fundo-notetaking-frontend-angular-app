@@ -1,4 +1,6 @@
 <!-- Top Header -->
-<app-header></app-header>
+<app-header
+   (menuToggle)="sidebarExpanded = $event" >
+</app-header>
 
-<app-sidebar></app-sidebar>
+<app-sidebar [isExpanded]="sidebarExpanded"></app-sidebar>
