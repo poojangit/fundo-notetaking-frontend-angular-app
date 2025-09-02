@@ -1,6 +1,7 @@
 <!-- Top Header -->
 <app-header
-   (menuToggle)="sidebarExpanded = $event" >
+   (menuToggle)="sidebarExpanded = $event"
+   (viewModeChanged)="onViewModeChanged($event)" >
 </app-header>
 
 <app-sidebar [isExpanded]="sidebarExpanded"></app-sidebar>

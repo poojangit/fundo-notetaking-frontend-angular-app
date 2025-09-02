@@ -9,6 +9,9 @@ export class DashboardComponent implements OnInit{
   // 🔄 Sidebar state toggling
   sidebarExpanded: boolean = false
 
+  //📐 Layout toggle: 'grid' (default) or 'list'
+  layoutType: 'grid' | 'list' = 'grid'
+
   ngOnInit(): void {
     console.log('✅ Dashboard initialized');
   }
@@ -22,5 +25,9 @@ export class DashboardComponent implements OnInit{
   @HostBinding('class.sidebar-expanded')
   get expandedClass() : boolean {
     return this.sidebarExpanded
+  }
+
+  onViewModeChanged(isGridView: boolean){
+    this.layoutType = isGridView ? 'grid': 'list'
   }
 }
