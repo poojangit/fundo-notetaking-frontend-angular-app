@@ -1,0 +1,19 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* 🔲 Main content area (notes, input, toolbar, etc.) */
+.main-content {
+    margin-top: 64px; // ⬆ Offset for fixed header height
+    margin-left: 72px; // ⬅ Default sidebar collapsed width
+    padding: 20px;
+    transition: margin-left 0.2s ease;
+}
+
+/* ⬅ Expanded sidebar adjustment */
+:host-context(.sidebar-expanded) .main-content {
+    margin-left: 260px; // ⬅ Full sidebar width
+}
+

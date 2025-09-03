@@ -1,0 +1,28 @@
+<div
+    class="note-input"
+    [class.expanded] = "isExpanded"
+    [ngStyle]="{ 'background-color' : selectedColor}"
+    (click)="expand()"
+>
+    <div class="top-row">
+        <input 
+        *ngIf="isExpanded"
+        type="text"
+        placeholder="Title"
+        [(ngModel)]="title"
+        class="title-input"
+        [ngClass]="selectedTextFormat"
+        >
+
+        <textarea 
+            placeholder="Take a note..."
+            [(ngModel)]="content"
+            (focus)="expand()"
+            (input) = "autoGrowTextArea($event)"
+            rows="1"
+            [ngClass]="selectedTextFormat"
+        >
+        </textarea>
+         <span *ngIf="isExpanded" class="material-icons pin-icon">push_pin</span>
+    </div>
+</div>
