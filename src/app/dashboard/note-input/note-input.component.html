@@ -1,28 +1,58 @@
 <div
-    class="note-input"
-    [class.expanded] = "isExpanded"
-    [ngStyle]="{ 'background-color' : selectedColor}"
-    (click)="expand()"
+  class="note-input"
+  [class.expanded]="isExpanded"
+  [ngStyle]="{ 'background-color': selectedColor }"
+  (click)="expand()"
 >
-    <div class="top-row">
-        <input 
-        *ngIf="isExpanded"
-        type="text"
-        placeholder="Title"
-        [(ngModel)]="title"
-        class="title-input"
-        [ngClass]="selectedTextFormat"
-        >
+  <div class="top-row">
+    <input
+      *ngIf="isExpanded"
+      type="text"
+      placeholder="Title"
+      [(ngModel)]="title"
+      class="title-input"
+      [ngClass]="selectedTextFormat"
+    />
 
-        <textarea 
-            placeholder="Take a note..."
-            [(ngModel)]="content"
-            (focus)="expand()"
-            (input) = "autoGrowTextArea($event)"
-            rows="1"
-            [ngClass]="selectedTextFormat"
-        >
-        </textarea>
-         <span *ngIf="isExpanded" class="material-icons pin-icon">push_pin</span>
+    <textarea
+      placeholder="Take a note..."
+      [(ngModel)]="content"
+      (focus)="expand()"
+      (input)="autoGrowTextArea($event)"
+      rows="1"
+      [ngClass]="selectedTextFormat"
+    >
+    </textarea>
+    <span *ngIf="isExpanded" class="material-icons pin-icon">push_pin</span>
+  </div>
+
+  <div class="toolbar" *ngIf="isExpanded">
+    <!-- color palette -->
+    <div class="color-picker-wrapper" (click)="toggleColorPalette($event)">
+      <span class="material-icons" title="Background color">palette</span>
+      <div class="color-palette" *ngIf="showColorPalette">
+        <div
+          class="color-swatch"
+          *ngFor="let color of colors"
+          [ngStyle]="{ 'background-color': color }"
+          (click)="setColor(color, $event)"
+        ></div>
+      </div>
     </div>
+
+    <!-- Text formatting -->
+    <div class="text-format-wrapper">
+      <span class="material-icons">format_size</span>
+      <div class="format-dropdown">
+        <div></div>
+      </div>
+    </div>
+
+    <!-- Action icons -->
+    <span class="material-icons" title="Archive">archive</span>
+    <span class="material-icons" title="More">more_vert</span>
+    <span class="material-icons" title="Undo">undo</span>
+    <span class="material-icons" title="Redo">redo</span>
+    <span class="material-icons close-btn">close</span>
+  </div>
 </div>

@@ -11,7 +11,14 @@ export class NoteInputComponent {
   content = ''
   selectedColor = '#ffffff'
   selectedTextFormat: 'normal' | 'heading' | 'subheading' = 'normal';
+  showColorPalette = false
+  showTextFormatDropdown = false
 
+  colors : string[] = [
+    '#ffffff', '#f28b82', '#fbbc04', '#fff475',
+    '#ccff90', '#a7ffeb', '#cbf0f8', '#aecbfa',
+    '#d7aefb', '#fdcfe8', '#e6c9a8', '#e8eaed'
+  ]
 
   expand(): void {
     this.isExpanded = true
@@ -23,11 +30,22 @@ export class NoteInputComponent {
     textarea.style.height = 'auto'
     textarea.style.height = textarea.scrollHeight + 'px'
   }
+ toggleColorPalette(event: Event): void {
+    event.stopPropagation();
+    this.showColorPalette = !this.showColorPalette;
+    this.showTextFormatDropdown = false;
+  }
+
+  setColor(color: string, event: Event) : void {
+    event.stopPropagation()
+    this.selectedColor = color
+    this.showColorPalette = false
+  }
 
   @HostListener('document:click')
   closeDropdowns(): void{
-    // this.showColorPalette = false
-    // this.showTextFormatDropdown = false
+    this.showColorPalette = false
+    this.showTextFormatDropdown = false
   }
 
 } 
