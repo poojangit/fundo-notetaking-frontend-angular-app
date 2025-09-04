@@ -44,4 +44,29 @@ export class NoteService {
     return this.http.post(`${this.baseUrl}/addNotes`, body, { headers});
   }
 
+  archiveNote(noteId: string) : Observable<any> {
+    const token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      Authorization: `${token}`,
+      'Content-Type': 'application/json'
+    })
+    const body = {
+      noteIdList: [noteId],
+      isArchived: true
+    }
+    return this.http.post(`${this.baseUrl}/archiveNotes`, body, {headers})
+  }
+
+  unarchiveNote(noteId: string) : Observable<any> {
+    const token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      Authorization : `${token}`,
+      'Content-Type' : 'application/json'
+    })
+    const body = {
+      noteidList : [noteId],
+      isArchived: false
+    }
+    return this.http.post(`${this.baseUrl}/archiveNotes`, body, {headers})
+  }
 }

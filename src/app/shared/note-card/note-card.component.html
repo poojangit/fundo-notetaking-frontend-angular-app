@@ -10,6 +10,9 @@
 
     <app-note-toolbar
         [note] = "note"
+        [isInArchive] = "isInArchive"
+        (archive) = "onArchive($event)"
+        
         
     ></app-note-toolbar>
 </div>

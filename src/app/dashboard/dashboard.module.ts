@@ -6,12 +6,14 @@ import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../shared/shared.module';
 import { NoteInputComponent } from './note-input/note-input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ArchiveComponent } from '../archive/archive.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    NoteInputComponent
+    NoteInputComponent,
+    ArchiveComponent
   ],
   imports: [
     CommonModule,

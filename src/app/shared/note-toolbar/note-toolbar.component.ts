@@ -8,7 +8,9 @@ import { Note } from 'src/app/models/note';
 })
 export class NoteToolbarComponent {
   @Input() note!: Note
+  @Input() isInArchive: boolean = false
   @Output() colorChange = new EventEmitter<{note: Note, color: string}>()
+  @Output() archive = new EventEmitter<Note>()
 
   showColorPalette = false
 
@@ -26,4 +28,7 @@ export class NoteToolbarComponent {
     this.showColorPalette = false;
   }
 
+  onArchive() {
+    this.archive.emit(this.note)
+  }
 }

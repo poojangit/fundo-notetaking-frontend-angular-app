@@ -1,0 +1,26 @@
+<!-- Resuse Header -->
+
+<app-header
+    (viewModeChanged) = "onViewModeChanged($event)"
+    (menuToggle)="sidebarExpanded = $event"
+    >
+</app-header>
+
+<!-- Siddbar -->
+ <app-sidebar [isExpanded]="sidebarExpanded"> </app-sidebar>
+
+<!-- Main Archive Content -->
+ <div class="main-content">
+    <div class="notes-container" [ngClass]="layoutType">
+        <app-note-card
+        *ngFor="let note of notes "
+        [note] = "note"
+        [layout] = "layoutType"
+        [isInArchive]="true"
+        (noteAction)="handleNoteAction($event)"
+        >
+        </app-note-card>
+    </div>
+
+ </div>
+

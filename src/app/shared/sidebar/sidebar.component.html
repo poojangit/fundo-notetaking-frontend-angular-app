@@ -3,6 +3,8 @@
     <!-- Notes -->
     <li 
       routerLink="/dashboard"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact: true}"
       title="Notes">
       <span class="material-icons">lightbulb</span>
       <span class="label">Notes</span>
@@ -20,10 +22,14 @@
     </li>
 
     <!-- Archive -->
-     <li title="Archive">
-        <span class="material-icons">archive</span>
-        <span class="label">Archive</span>
-     </li>
+    <li
+      routerLink="/dashboard/archive"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      title="Archive">
+      <span class="material-icons">archive</span>
+      <span class="label">Archive</span>
+    </li>
 
      <!-- Trash(optional) -->
       <li title="Trash">

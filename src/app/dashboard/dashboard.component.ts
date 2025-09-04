@@ -55,6 +55,16 @@ export class DashboardComponent implements OnInit{
   handleNoteAction(event: {type: NoteActionType, note: Note, color?: string}){
    const{type,note, color} = event
 
+   if(type === 'archive') {
+    note.isArchived = true
+    this.notes = this.notes.filter(n => n.id !==  note.id)
+
+    this.noteService.archiveNote(note.id!).subscribe({
+       next: () => console.log('✔️ Archived using archiveNotes API'),
+       error: err => console.error('❌ Archive failed', err)
+    })
+   }
+
   }
 
 

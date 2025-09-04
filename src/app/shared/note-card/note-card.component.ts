@@ -9,6 +9,8 @@ import { Note, NoteActionType } from 'src/app/models/note';
 export class NoteCardComponent {
   @Input() note!: Note
   @Input() layout: 'grid' | 'list' = 'grid'
+  @Input() isInArchiveSection: boolean = false
+  @Input() isInArchive: boolean = false
 
   @Output() noteAction = new EventEmitter<{type: NoteActionType, note: Note, color?: string}>
 
@@ -20,5 +22,13 @@ export class NoteCardComponent {
 
   onMouseLeave() {
     this.isHovered == false
+  }
+
+  onArchive(note:Note){
+    this.noteAction.emit({type: 'archive', note})
+  }
+
+  onColorChange(event: {note: Note; color: string}){
+    this.noteAction.emit({type: 'color', note: event.note, color: event.color})
   }
 }

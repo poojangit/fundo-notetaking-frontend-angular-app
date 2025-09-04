@@ -20,11 +20,12 @@
 
   <!-- ✅ Normal Notes Toolbar -->
   <ng-template #normalToolbar>
-    <!-- Archive -->
+     <!-- Archive -->
     <span
       class="material-icons icon"
-     >
-
+      [title]="isInArchive ? 'Unarchive' : 'Archive'"
+      (click)="onArchive()">
+      {{ isInArchive ? 'unarchive' : 'archive' }}
     </span>
 
     <!-- Trash -->
@@ -39,7 +40,7 @@
       <span
         class="material-icons icon"
         title="Background color"
-        (click) = "toggleColorPalette()">
+        (click)="toggleColorPalette()">
         palette
       </span>
 
