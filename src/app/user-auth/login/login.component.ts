@@ -17,7 +17,7 @@ export class LoginComponent {
         password: form.value.password,
       }
 
-      this.http.post('http://localhost:3000/api/v1/users/login', loginPayload)
+      this.http.post('https://fundoonotes.incubation.bridgelabz.com/api/user/login', loginPayload)
         .subscribe({
           next: (res: any) => {
             console.log('Login success:', res);
