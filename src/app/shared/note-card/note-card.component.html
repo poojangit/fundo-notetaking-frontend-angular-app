@@ -1,0 +1,14 @@
+<div
+    class="note-card"
+    [ngClass]="layout"
+    [ngStyle]="{'background-color' : note.color}"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+>
+    <h3 class="note-title">{{note.title}}</h3>
+    <p class="note-desc">{{note.description}}</p>
+
+    <div>
+        
+    </div>
+</div>

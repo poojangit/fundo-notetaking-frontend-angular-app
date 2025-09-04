@@ -1,4 +1,6 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, EventEmitter, HostListener, Output } from '@angular/core';
+import { Note } from 'src/app/models/note';
+import { NoteService } from 'src/app/services/note.service';
 
 @Component({
   selector: 'app-note-input',
@@ -26,13 +28,41 @@ export class NoteInputComponent {
     { label: 'Subheading', value: 'subheading' }
   ];
 
+  @Output() noteCreated = new EventEmitter<void>()  // NEW output to give update to the dashboard
+
+  constructor(private noteService: NoteService){}
+
   expand(): void {
     this.isExpanded = true
     this.closeDropdowns()
   }
 
   close(): void {
+    this.saveNote()
+  }
 
+  saveNote() : void {
+    if(this.title.trim() || this.content.trim()) {
+      const newNote: Note = {
+        title: this.title,
+        description: this.content,
+        color: this.selectedColor,
+        textFormat: this.selectedTextFormat,
+        isArchived: false,
+        isDeleted: false,
+        isPined: false
+      }
+
+      this.noteService.addNote(newNote).subscribe({
+        next: (res: any) => {
+          console.log("Note save successfully: ", res);
+          this.noteCreated.emit() //Notify the dashboard
+        },
+        error: (err:any) => {
+          console.error("Error saving note: " , err)
+        }
+      })
+    }
   }
 
   autoGrowTextarea(event: Event):void {

@@ -10,5 +10,17 @@
 
 <!-- Main Dashboard Content -->
 <div class="main-content">
-    <app-note-input></app-note-input>
+
+  <!-- Note Input Box -->
+    <app-note-input (noteCreated)="loadNotes()"></app-note-input>
+
+  <!-- Notes Display Grid/List -->
+   <div class="notes-container" [ngClass]="layoutType">
+    <app-note-card 
+        *ngFor="let note of notes"
+        [note] = "note"
+        [layout]="layoutType"
+        (noteAction)="handleNoteAction($event)"
+    ></app-note-card>
+   </div>
 </div>
