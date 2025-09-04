@@ -1,0 +1,56 @@
+<div class="toolbar" [ngClass]="{ 'align-right': note.isDeleted }">
+
+<!-- 🗑️ If the note is in Trash -->
+  <ng-container *ngIf="note.isDeleted; else normalToolbar">
+    <!-- Restore from Trash -->
+    <span
+      class="material-icons icon"
+      title="Restore">
+      restore_from_trash
+    </span>
+
+    <!-- Delete Forever -->
+    <span
+      class="material-icons icon"
+      title="Delete Forever"
+      >
+      delete_forever
+    </span>
+  </ng-container>
+
+  <!-- ✅ Normal Notes Toolbar -->
+  <ng-template #normalToolbar>
+    <!-- Archive -->
+    <span
+      class="material-icons icon"
+     >
+
+    </span>
+
+    <!-- Trash -->
+    <span
+      class="material-icons icon"
+      title="Delete">
+      delete
+    </span>
+
+    <!-- Color Palette -->
+    <div class="color-picker-wrapper">
+      <span
+        class="material-icons icon"
+        title="Background color"
+        (click) = "toggleColorPalette()">
+        palette
+      </span>
+
+      <div class="color-palette" *ngIf="showColorPalette">
+        <div
+          class="color-swatch"
+           *ngFor="let color of colors"
+          [ngStyle]="{ 'background-color': color }"
+          (click)="selectColor(color)">
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
