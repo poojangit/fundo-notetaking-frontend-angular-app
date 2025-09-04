@@ -39,6 +39,7 @@ export class NoteInputComponent {
 
   close(): void {
     this.saveNote()
+    this.resetform()
   }
 
   saveNote() : void {
@@ -63,6 +64,15 @@ export class NoteInputComponent {
         }
       })
     }
+  }
+
+  resetform(): void {
+    this.title = ''
+    this.content = ''
+    this.selectedColor = '#ffffff'
+    this.selectedTextFormat = 'normal'
+    this.isExpanded = false
+    this.closeDropdowns()
   }
 
   autoGrowTextarea(event: Event):void {
