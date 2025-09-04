@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit{
 
   ngOnInit(): void {
     console.log('✅ Dashboard initialized');
+    this.loadNotes(); // 📥 Load saved notes on dashboard load
   }
 
   // 🔄 Method to toggle sidebar (used by header menu icon)

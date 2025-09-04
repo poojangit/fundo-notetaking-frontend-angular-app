@@ -10,7 +10,7 @@ export class NoteService {
   private baseUrl = 'https://fundoonotes.incubation.bridgelabz.com/api/notes'
   constructor(private http: HttpClient) {}
 
-   getNotes(): Observable<{ data: { data: Note[] } }> {
+    getNotes(): Observable<{ data: { data: Note[] } }> {
     const token = localStorage.getItem('token');
     console.log("📥 Token used in getNotes():", token); // Debug
 
@@ -19,7 +19,6 @@ export class NoteService {
       'Content-Type': 'application/json'
 
     });
-
     return this.http.get<{ data: { data: Note[] } }>(`${this.baseUrl}/getNotesList`, { headers });
 
   }
