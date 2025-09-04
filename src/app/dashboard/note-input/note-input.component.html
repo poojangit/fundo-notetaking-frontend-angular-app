@@ -18,7 +18,7 @@
       placeholder="Take a note..."
       [(ngModel)]="content"
       (focus)="expand()"
-      (input)="autoGrowTextArea($event)"
+      (input)="autoGrowTextarea($event)"
       rows="1"
       [ngClass]="selectedTextFormat"
     >
@@ -41,10 +41,16 @@
     </div>
 
     <!-- Text formatting -->
-    <div class="text-format-wrapper">
-      <span class="material-icons">format_size</span>
-      <div class="format-dropdown">
-        <div></div>
+    <div class="text-format-wrapper" (click)="toggleTextFormatDropdown($event)">
+      <span class="material-icons" title="text format">format_size</span>
+      <div class="format-dropdown" *ngIf="showTextFormatDropdown">
+        <div
+        *ngFor="let format of textFormats"
+        (click)="selectTextFormat(format.value, $event)"
+        [class.selected]="format.value === selectedTextFormat"
+        >
+        {{format.label}}
+    </div>
       </div>
     </div>
 
@@ -53,6 +59,6 @@
     <span class="material-icons" title="More">more_vert</span>
     <span class="material-icons" title="Undo">undo</span>
     <span class="material-icons" title="Redo">redo</span>
-    <span class="material-icons close-btn">close</span>
+    <span class="material-icons close-btn" (click)="close()">close</span>
   </div>
 </div>

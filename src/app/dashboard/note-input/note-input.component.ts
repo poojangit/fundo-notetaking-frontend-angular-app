@@ -20,12 +20,22 @@ export class NoteInputComponent {
     '#d7aefb', '#fdcfe8', '#e6c9a8', '#e8eaed'
   ]
 
+   textFormats = [
+    { label: 'Normal text', value: 'normal' },
+    { label: 'Heading', value: 'heading' },
+    { label: 'Subheading', value: 'subheading' }
+  ];
+
   expand(): void {
     this.isExpanded = true
     this.closeDropdowns()
   }
 
-  autoGrowTextArea(event: Event):void {
+  close(): void {
+
+  }
+
+  autoGrowTextarea(event: Event):void {
     const textarea = event.target as HTMLTextAreaElement
     textarea.style.height = 'auto'
     textarea.style.height = textarea.scrollHeight + 'px'
@@ -36,10 +46,24 @@ export class NoteInputComponent {
     this.showTextFormatDropdown = false;
   }
 
+  toggleTextFormatDropdown(event: Event): void {
+    event.stopPropagation()
+    this.showTextFormatDropdown = !this.showTextFormatDropdown
+    this.showColorPalette = false
+  }
+
   setColor(color: string, event: Event) : void {
     event.stopPropagation()
     this.selectedColor = color
     this.showColorPalette = false
+  }
+
+  selectTextFormat(format: string, event: Event) : void {
+    event.stopPropagation()
+    if(['normal', 'heading', 'subheading'].includes(format)) {
+      this.selectedTextFormat = format as 'normal' | 'heading' | 'subheading'
+    }
+    this.showTextFormatDropdown = false
   }
 
   @HostListener('document:click')
