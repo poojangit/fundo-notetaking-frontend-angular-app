@@ -74,6 +74,9 @@ export class HeaderComponent implements OnInit{
       this.router.navigate(['/login']) // reuse login route
      }
 
+    onSearch(event: any) {
+      this.searchTermChanged.emit(event.target.value.toLowerCase().trim());
+    }
 
      @HostListener('document:click', ['$event'])
      closePopupOnOutsideClick(event:Event){

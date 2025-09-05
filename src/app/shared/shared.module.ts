@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NoteCardComponent } from './note-card/note-card.component';
 import { NoteToolbarComponent } from './note-toolbar/note-toolbar.component';
+import { SearchNotesPipe } from './pipes/search-pipes.pipe';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { NoteToolbarComponent } from './note-toolbar/note-toolbar.component';
     SidebarComponent,
     NoteCardComponent,
     NoteToolbarComponent,
+    SearchNotesPipe
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { NoteToolbarComponent } from './note-toolbar/note-toolbar.component';
     SidebarComponent,
     RouterModule,
     NoteCardComponent,
-    NoteToolbarComponent
+    NoteToolbarComponent,
+    SearchNotesPipe
   ]
 })
 export class SharedModule { }

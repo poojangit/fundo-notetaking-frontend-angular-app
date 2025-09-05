@@ -1,7 +1,8 @@
 <!-- Top Header -->
 <app-header
    (menuToggle)="sidebarExpanded = $event"
-   (viewModeChanged)="onViewModeChanged($event)" >
+   (viewModeChanged)="onViewModeChanged($event)" 
+   (searchTermChanged)="onSearchTermChanged($event)">
 </app-header>
 
 <!-- Sidebar -->
@@ -17,7 +18,7 @@
   <!-- Notes Display Grid/List -->
    <div class="notes-container" [ngClass]="layoutType">
     <app-note-card 
-        *ngFor="let note of notes"
+        *ngFor="let note of notes | searchNotes:searchTerm"
         [note] = "note"
         [layout]="layoutType"
         (noteAction)="handleNoteAction($event)"

@@ -1,7 +1,8 @@
 <!-- Reuse Header -->
 <app-header
   (viewModeChanged)="onViewModeChanged($event)"
-  (menuToggle)="sidebarExpanded = $event">
+  (menuToggle)="sidebarExpanded = $event"
+  (searchTermChanged)="onSearchTermChanged($event)">
 </app-header>
 
 <!-- Sidebar -->

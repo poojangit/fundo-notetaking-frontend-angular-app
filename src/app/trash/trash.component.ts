@@ -14,6 +14,7 @@ export class TrashComponent implements OnInit {
   sidebarExpanded: boolean = false;
   layoutType: 'grid' | 'list' = 'grid'; // Optional, for consistency
 
+  searchTerm: string = '';
   constructor(private noteService: NoteService) {}
 
   ngOnInit(): void {
@@ -77,5 +78,7 @@ export class TrashComponent implements OnInit {
   get expandedClass(): boolean {
     return this.sidebarExpanded;
   }
- 
+   onSearchTermChanged(term: string) {
+    this.searchTerm = term;
+  }
 }

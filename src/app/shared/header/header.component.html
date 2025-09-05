@@ -9,8 +9,8 @@
 
     <div class="search-bar">
         <span class="material-icons search-icon">search</span>
-        <input type="text" placeholder="Search">
-        <span class="material-icons close-icon" >close</span>
+        <input type="text" placeholder="Search" [(ngModel)]="searchQuery"  (input)="onSearch($event)">
+        <span class="material-icons close-icon"  *ngIf="searchQuery" (click)="searchQuery = ''">close</span>
     </div>
 
     <div class="header-icons">

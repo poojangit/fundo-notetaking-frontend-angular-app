@@ -17,7 +17,8 @@ export class DashboardComponent implements OnInit{
   //📐 Layout toggle: 'grid' (default) or 'list'
   layoutType: 'grid' | 'list' = 'grid'
 
-  
+  searchTerm: string = '';
+
   constructor(private noteService: NoteService) {
     // ✅ NoteService injected to fetch notes
   }
@@ -87,5 +88,9 @@ handleNoteAction(event: { type: NoteActionType, note: Note, color?: string }) {
 
   onViewModeChanged(isGridView: boolean){
     this.layoutType = isGridView ? 'grid': 'list'
+  }
+
+  onSearchTermChanged(term: string) {
+    this.searchTerm = term;
   }
 }

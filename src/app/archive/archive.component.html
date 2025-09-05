@@ -3,7 +3,7 @@
 <app-header
     (viewModeChanged) = "onViewModeChanged($event)"
     (menuToggle)="sidebarExpanded = $event"
-    >
+    (searchTermChanged)="onSearchTermChanged($event)">
 </app-header>
 
 <!-- Siddbar -->
@@ -13,7 +13,7 @@
  <div class="main-content">
     <div class="notes-container" [ngClass]="layoutType">
         <app-note-card
-        *ngFor="let note of notes "
+        *ngFor="let note of notes | searchNotes : searchTerm "
         [note] = "note"
         [layout] = "layoutType"
         [isInArchive]="true"

@@ -13,6 +13,8 @@ export class ArchiveComponent implements OnInit{
   layoutType: 'grid' | 'list' = 'grid'
   sidebarExpanded: boolean = false
 
+  searchTerm: string = '';
+  
   constructor(private noteService: NoteService) {}
 
   @HostBinding('class.sidebar-expanded')
@@ -69,5 +71,7 @@ export class ArchiveComponent implements OnInit{
       });
     }
   }
-
+    onSearchTermChanged(term: string) {
+    this.searchTerm = term;
+  }
 }
