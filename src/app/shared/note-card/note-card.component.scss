@@ -24,3 +24,36 @@
     white-space: pre-wrap;
     word-wrap: break-word;
 }
+
+.toolbar-container {
+    height: 32px;
+    margin-top: 6px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+
+    &.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* 🧰 Hover-only toolbar */
+
+.toolbar {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    display: flex;
+    gap: 10px;
+
+    .icon {
+        font-size: 1.1rem;
+        cursor: pointer;
+        opacity: 0.8;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

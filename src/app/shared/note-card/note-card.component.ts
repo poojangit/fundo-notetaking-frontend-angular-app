@@ -21,7 +21,7 @@ export class NoteCardComponent {
   }
 
   onMouseLeave() {
-    this.isHovered == false
+    this.isHovered = false
   }
 
   onArchive(note:Note){
