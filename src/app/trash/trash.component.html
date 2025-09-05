@@ -1,0 +1,22 @@
+<!-- Reuse Header -->
+<app-header
+  (viewModeChanged)="onViewModeChanged($event)"
+  (menuToggle)="sidebarExpanded = $event">
+</app-header>
+
+<!-- Sidebar -->
+<app-sidebar [isExpanded]="sidebarExpanded"></app-sidebar>
+
+<!-- Main Archive Content -->
+<div class="main-content">
+<!--  <h2 class="page-title">Trashed Notes</h2>-->
+
+  <div class="notes-container" [ngClass]="layoutType">
+  <app-note-card
+      *ngFor="let note of trashedNotes"
+      [note]="note"
+      [layout]="layoutType"
+      (noteAction)="handleNoteAction($event)">
+    </app-note-card>
+  </div>
+</div>

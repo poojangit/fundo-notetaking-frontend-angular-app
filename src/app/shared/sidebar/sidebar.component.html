@@ -31,10 +31,14 @@
       <span class="label">Archive</span>
     </li>
 
-     <!-- Trash(optional) -->
-      <li title="Trash">
-        <span class="material-icons">delete</span>
-        <span class="label">Trash</span>
-      </li>
+     <!-- Trash (optional) -->
+    <li
+      routerLink="/dashboard/trash"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      title="Trash">
+      <span class="material-icons">delete</span>
+      <span class="label">Trash</span>
+    </li>
   </ul>
 </nav>

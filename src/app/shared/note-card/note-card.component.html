@@ -1,17 +1,25 @@
-<div
-    class="note-card"
-    [ngClass]="layout"
-    [ngStyle]="{'background-color' : note.color}"
-    (mouseenter)="onMouseEnter()"
-    (mouseleave)="onMouseLeave()"
->
-    <h3 class="note-title">{{note.title}}</h3>
-    <p class="note-desc">{{note.description}}</p>
 
-    <app-note-toolbar
-        [note] = "note"
-        [isInArchive] = "isInArchive"
-        (archive) = "onArchive($event)"
-        
-    ></app-note-toolbar>
+<div
+  class="note-card"
+  [ngClass]="layout"
+  [ngStyle]="{ 'background-color': note.color }"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+>
+  <h3>{{ note.title }}</h3>
+  <p>{{ note.description }}</p>
+
+  <div class="toolbar-container" [class.visible]="isHovered">
+
+  <app-note-toolbar
+    [note]="note"
+    [isInArchive]="isInArchive"
+    (archive)="onArchive($event)"
+    (trash)="onTrash($event)"
+    (restore)="onRestore($event)"
+    (deleteForever)="onDeleteForever($event)"
+    (colorChange)="onColorChange($event)"
+  >
+  </app-note-toolbar>
+  </div>
 </div>

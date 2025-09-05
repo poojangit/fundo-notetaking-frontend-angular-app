@@ -52,21 +52,38 @@ export class DashboardComponent implements OnInit{
     });
   }
   
-  handleNoteAction(event: {type: NoteActionType, note: Note, color?: string}){
-   const{type,note, color} = event
+handleNoteAction(event: { type: NoteActionType, note: Note, color?: string }) {
+    const { type, note, color } = event;
 
-   if(type === 'archive') {
-    note.isArchived = true
-    this.notes = this.notes.filter(n => n.id !==  note.id)
+    if (type === 'archive') {
+      note.isArchived = true;
+      this.notes = this.notes.filter(n => n.id !== note.id);
 
-    this.noteService.archiveNote(note.id!).subscribe({
-       next: () => console.log('✔️ Archived using archiveNotes API'),
-       error: err => console.error('❌ Archive failed', err)
-    })
-   }
+      this.noteService.archiveNote(note.id!).subscribe({
+        next: () => console.log('✔️ Archived using archiveNotes API'),
+        error: err => console.error('❌ Archive failed', err)
+      });
+    }
 
+    if (type === 'trash') {
+      note.isDeleted = true;
+      this.notes = this.notes.filter(n => n.id !== note.id);
+
+      this.noteService.trashNote(note.id!).subscribe({
+        next: () => console.log('✔️ Moved to trash using trashNotes API'),
+        error: err => console.error('❌ Trash failed', err)
+      });
+    }
+
+    if (type === 'color' && color) {
+      note.color = color;
+
+      this.noteService.updateNoteColor(note.id!, color).subscribe({
+        next: () => console.log('✔️ Color updated'),
+        error: err => console.error('❌ Color update failed', err)
+      });
+    }
   }
-
 
   onViewModeChanged(isGridView: boolean){
     this.layoutType = isGridView ? 'grid': 'list'

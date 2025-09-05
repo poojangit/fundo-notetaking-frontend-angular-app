@@ -36,19 +36,38 @@ export class ArchiveComponent implements OnInit{
       error: err => console.error('❌ Failed to load archived notes', err)
     })
   }
+ handleNoteAction(event: { type: NoteActionType, note: Note, color?: string }) {
+    const { type, note, color } = event;
 
-  handleNoteAction(event: {type: NoteActionType, note: Note, color?: string}) {
-    const {type, note, color} = event
+    if (type === 'trash') {
+      note.isDeleted = true;
+      this.notes = this.notes.filter(n => n.id !== note.id);
 
-    if(type === 'archive') {
+      this.noteService.trashNote(note.id!, true ).subscribe({
+        next: () => console.log('🗑️ Moved to Trash'),
+        error: (err: any) => console.error('❌ Restore failed', err)
+      });
+    }
+
+    if (type === 'archive') {
       // In Archive view, archive = Unarchive
-      note.isArchived = false
-      this.notes = this.notes.filter(n => n.id !== note.id)
+      note.isArchived = false;
+      this.notes = this.notes.filter(n => n.id !== note.id);
 
       this.noteService.unarchiveNote(note.id!).subscribe({
         next: () => console.log('📤 Unarchived'),
         error: (err) => console.error('❌ Unarchive failed', err)
       });
+
+    }
+
+    if (type === 'color' && color) {
+      note.color = color;
+      this.noteService.updateNoteColor(note.id!, color).subscribe({
+        next: () => console.log('🎨 Color updated'),
+        error: err => console.error('❌ Color update failed', err)
+      });
     }
   }
+
 }

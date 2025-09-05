@@ -5,7 +5,8 @@
     <!-- Restore from Trash -->
     <span
       class="material-icons icon"
-      title="Restore">
+      title="Restore"
+      (click)="onRestore()">
       restore_from_trash
     </span>
 
@@ -13,14 +14,14 @@
     <span
       class="material-icons icon"
       title="Delete Forever"
-      >
+      (click)="onDeleteForever()">
       delete_forever
     </span>
   </ng-container>
 
   <!-- ✅ Normal Notes Toolbar -->
   <ng-template #normalToolbar>
-     <!-- Archive -->
+    <!-- Archive -->
     <span
       class="material-icons icon"
       [title]="isInArchive ? 'Unarchive' : 'Archive'"
@@ -31,7 +32,8 @@
     <!-- Trash -->
     <span
       class="material-icons icon"
-      title="Delete">
+      title="Delete"
+      (click)="onTrash()">
       delete
     </span>
 
@@ -47,7 +49,7 @@
       <div class="color-palette" *ngIf="showColorPalette">
         <div
           class="color-swatch"
-           *ngFor="let color of colors"
+          *ngFor="let color of colors"
           [ngStyle]="{ 'background-color': color }"
           (click)="selectColor(color)">
         </div>

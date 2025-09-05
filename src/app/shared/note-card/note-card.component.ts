@@ -28,7 +28,19 @@ export class NoteCardComponent {
     this.noteAction.emit({type: 'archive', note})
   }
 
+  onTrash(note: Note) {
+    this.noteAction.emit({type: 'trash', note});
+  }
+
   onColorChange(event: {note: Note; color: string}){
     this.noteAction.emit({type: 'color', note: event.note, color: event.color})
+  }
+
+  onRestore(note: Note) {
+    this.noteAction.emit({ type: 'restore', note });
+  }
+
+  onDeleteForever(note: Note) {
+    this.noteAction.emit({ type: 'deleteForever', note });
   }
 }

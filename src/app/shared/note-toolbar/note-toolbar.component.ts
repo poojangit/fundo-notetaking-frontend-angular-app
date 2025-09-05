@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Note } from 'src/app/models/note';
+import { Note } from '../../models/note';
 
 @Component({
   selector: 'app-note-toolbar',
@@ -7,12 +7,17 @@ import { Note } from 'src/app/models/note';
   styleUrls: ['./note-toolbar.component.scss']
 })
 export class NoteToolbarComponent {
-  @Input() note!: Note
-  @Input() isInArchive: boolean = false
-  @Output() colorChange = new EventEmitter<{note: Note, color: string}>()
-  @Output() archive = new EventEmitter<Note>()
+  @Input() note!: Note;
+  @Input() isInArchive: boolean = false;
 
-  showColorPalette = false
+  @Output() archive = new EventEmitter<Note>();
+  @Output() trash = new EventEmitter<Note>();
+  @Output() colorChange = new EventEmitter<{ note: Note; color: string }>();
+
+  @Output() restore = new EventEmitter<Note>();
+  @Output() deleteForever = new EventEmitter<Note>();
+
+  showColorPalette = false;
 
   colors: string[] = [
     '#ffffff', '#f28b82', '#fbbc04', '#fff475',
@@ -23,12 +28,25 @@ export class NoteToolbarComponent {
   toggleColorPalette() {
     this.showColorPalette = !this.showColorPalette;
   }
-    selectColor(color: string) {
+
+  selectColor(color: string) {
     this.colorChange.emit({ note: this.note, color });
     this.showColorPalette = false;
   }
 
   onArchive() {
-    this.archive.emit(this.note)
+    this.archive.emit(this.note);
+  }
+
+  onTrash() {
+    this.trash.emit(this.note);
+  }
+
+  onRestore() {
+    this.restore.emit(this.note);
+  }
+
+  onDeleteForever() {
+    this.deleteForever.emit(this.note);
   }
 }

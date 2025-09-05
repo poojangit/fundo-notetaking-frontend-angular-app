@@ -10,12 +10,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/header/header.component';
 import { SharedModule } from './shared/shared.module';
 import { ArchiveComponent } from './archive/archive.component';
+import { TrashComponent } from './trash/trash.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
+    TrashComponent,
   ],
   imports: [
     BrowserModule,
