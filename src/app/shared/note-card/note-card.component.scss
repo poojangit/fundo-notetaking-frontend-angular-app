@@ -7,6 +7,17 @@
     word-wrap: break-word;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 
+    &.grid {
+    width: 100%;                     // ✅ Let grid handle width
+    display: flex;
+    flex-direction: column;
+  }
+
+  &.list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
     &:hover {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     }
