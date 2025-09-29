@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
     providedIn: 'root'
 })
 export class UserService {
-    private baseUrl = 'https://fundoonotes.incubation.bridgelabz.com/api/user/login'
+    private baseUrl = 'https://fundoonotes.incubation.bridgelabz.com/api/user'
 
     constructor(private http : HttpClient) {}
 

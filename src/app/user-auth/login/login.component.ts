@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service'; // ⬅️ New import for UserService
 
 @Component({
   selector: 'app-login',
@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private http: HttpClient, private router : Router) {}
+  // 🗑️ Removed HttpClient injection
+  // ✅ Injected UserService for handling API calls
+  constructor(private userService: UserService, private router : Router) {}
 
   onLogin(form: any): void {
     if(form.valid) {
@@ -17,7 +19,8 @@ export class LoginComponent {
         password: form.value.password,
       }
 
-      this.http.post('https://fundoonotes.incubation.bridgelabz.com/api/user/login', loginPayload)
+      // ✅ Calling the centralized login method in UserService
+      this.userService.login(loginPayload) 
         .subscribe({
           next: (res: any) => {
             console.log('Login success:', res);
