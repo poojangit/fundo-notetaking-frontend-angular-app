@@ -11,6 +11,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { SharedModule } from './shared/shared.module';
 import { ArchiveComponent } from './archive/archive.component';
 import { TrashComponent } from './trash/trash.component';
+import { ForgotPasswordComponent } from './user-auth/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TrashComponent } from './trash/trash.component';
     LoginComponent,
     SignupComponent,
     TrashComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,
