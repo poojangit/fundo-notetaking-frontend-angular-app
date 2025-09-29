@@ -73,6 +73,13 @@
                         >
                         Please confirm your password
                         </div>
+
+                        <div
+                            class="error"
+                            *ngIf="signupForm.errors?.['passwordsMismatch'] && confirmPassword.touched"
+                        >
+                        Passwords do not match. Enter correct password!
+                        </div>
                     </div>
                 </div>
 

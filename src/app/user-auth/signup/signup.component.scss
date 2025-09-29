@@ -111,3 +111,41 @@ form .row {
     max-width: 100%;
     height: auto;
 }
+
+//* Responsive Adjustments */
+
+@media (max-width: 768px) {
+    .signup-box {
+        flex-direction: column;
+        width: 480px;
+    }
+    .illustration {
+        order: -1;
+        padding-top:0 ;
+        max-height: 100px;
+    }
+    .form-section {
+        padding: 16px;
+    }
+}
+
+/* Screens smaller than 576px (Most phones) */
+
+@media (max-width: 576px) {
+    .signup-box {
+        width: 95%;
+        padding: 0;
+    }
+
+    .form-section {
+        padding: 24px 16px;
+    }
+
+    form .row {
+        flex-direction: column;
+        gap: 0;
+    }
+    .illustration {
+        display: none;
+    }
+}
