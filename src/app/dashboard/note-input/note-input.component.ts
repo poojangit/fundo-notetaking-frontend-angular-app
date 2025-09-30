@@ -39,7 +39,7 @@ export class NoteInputComponent {
 
   close(): void {
     this.saveNote()
-    this.resetform()
+    // this.resetform()
   }
 
   saveNote() : void {
@@ -58,11 +58,15 @@ export class NoteInputComponent {
         next: (res: any) => {
           console.log("Note save successfully: ", res);
           this.noteCreated.emit() //Notify the dashboard
+          this.resetform()
         },
         error: (err:any) => {
           console.error("Error saving note: " , err)
+          this.resetform()
         }
       })
+    } else {
+      this.resetform()
     }
   }
 
