@@ -152,3 +152,12 @@
     font-style: italic;
   }
 }
+
+/* 📱 Mobile Adjustments for Note Input (Screen width <= 600px) */
+@media (max-width: 600px) {
+  .note-input {
+    max-width: 100%; /* Ensure it uses all available width */
+    margin: 0 10px; /* Small side margin for visual comfort */
+    padding: 10px 12px 6px; /* Slightly reduced padding */
+  }
+}

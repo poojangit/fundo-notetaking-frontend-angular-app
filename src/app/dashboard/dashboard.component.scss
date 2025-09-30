@@ -31,3 +31,23 @@
     padding: 16px;
     transition: all 0.3s ease-in-out
 }
+
+/* 📱 Mobile Adjustments (Screen width <= 768px) */
+@media (max-width: 768px) {
+    .main-content {
+        /* Remove default sidebar offset when collapsed */
+        // margin-left: 0; 
+        padding: 10px; 
+    }
+
+    /* Adjust expanded sidebar margin (less push) */
+    :host-context(.sidebar-expanded) .main-content {
+        margin-left: 200px; 
+    }
+
+    /* Adjust note card minimum size for smaller displays */
+    .notes-container.grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 10px;
+    }
+}
