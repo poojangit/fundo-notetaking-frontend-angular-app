@@ -17,6 +17,8 @@ export class HeaderComponent implements OnInit{
       showProfilePopup: boolean = false
       isSidebarExpanded = false
 
+      isMobileSearchVisible: boolean = false
+
      profilePic: string = "https://www.gravatar.com/avatar?d=mp"
      userName: string = ''
      userEmail: string = ''
@@ -39,6 +41,13 @@ export class HeaderComponent implements OnInit{
         // profilePic can be updated if API returns one
       }
 
+      toggleMobileSearch() {
+        this.isMobileSearchVisible = !this.isMobileSearchVisible
+        if(!this.isMobileSearchVisible) {
+          this.searchQuery = ''
+          this.searchTermChanged.emit('')
+        }
+      }
       toggleSidebar() {
         this.isSidebarExpanded = !this.isSidebarExpanded
         this.menuToggle.emit(this.isSidebarExpanded)

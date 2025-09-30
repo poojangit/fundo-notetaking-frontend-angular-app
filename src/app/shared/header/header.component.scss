@@ -86,6 +86,10 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    
+    .search-icon-mobile {
+        display: none; 
+    }
 
     .material-icons {
         font-size: 24px;
@@ -188,8 +192,29 @@
     padding: 0 12px;
   }
 
+  .header-icons .search-icon-mobile {
+    display: block;
+  }
+  .header-icons span:nth-child(3) {
+    display: none;
+  }
   .header-icons {
-    gap: 12px;
+    gap: 10px;
+  }
+
+
+  .main-header.mobile-search-active {
+    .menu-logo {
+        .keep-title, img {
+            display: none;
+        }
+    }
+    .search-bar {
+        display: flex !important;
+        flex: 1;
+        padding: 6px 4px;
+        margin: 0 10px;
+    }
   }
 }
 
@@ -200,7 +225,7 @@
 
   .header-icons .material-icons {
     font-size: 22px;
-    padding: 4px;
+    padding: 2px;
   }
 
   .profile-wrapper .profile-pic {

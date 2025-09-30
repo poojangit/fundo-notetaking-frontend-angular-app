@@ -1,7 +1,7 @@
-<header class="main-header">
+<header class="main-header" [class.mobile-search-active]="isMobileSearchVisible">
     <div class="menu-logo">
-        <button class="menu-icon" (click)="toggleSidebar()">
-            <span class="material-icons">menu</span>
+        <button class="menu-icon" (click)="isMobileSearchVisible ? toggleMobileSearch() : toggleSidebar()">
+            <span class="material-icons">{{ isMobileSearchVisible ? 'arrow_back' : 'menu'}}</span>
         </button>
         <img title="fundoo" src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png" alt="Keep Logo">
         <span class="keep-title" title="fundoo">Fundoo</span>
@@ -10,10 +10,12 @@
     <div class="search-bar">
         <span class="material-icons search-icon">search</span>
         <input type="text" placeholder="Search" [(ngModel)]="searchQuery"  (input)="onSearch($event)">
-        <span class="material-icons close-icon"  *ngIf="searchQuery" (click)="searchQuery = ''">close</span>
+        <span class="material-icons close-icon"  *ngIf="searchQuery" (click)="searchQuery = ''; onSearch(null)">close</span>
     </div>
 
     <div class="header-icons">
+        <span class="material-icons search-icon-mobile" title="Search" (click)="toggleMobileSearch()">search</span>
+
         <span class="material-icons" title="refresh">refresh</span>
         <span class="material-icons" title="{{isGridView ? 'List view' : 'Grid view'}}" (click)="toggleView()">{{isGridView ? 'view_agenda' : 'grid_view'}}</span>
         <span class="material-icons" title="Settings">settings</span>
